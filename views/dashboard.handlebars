@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- include your CSS links here -->
+</head>
+<body>
+    <h1>Dashboard</h1>
+    {{#each posts}}
+        <div>
+            <h3>{{this.title}}</h3>
+            <p>{{this.content}}</p>
+            <!-- Add buttons/links for editing and deleting posts -->
+        </div>
+    {{else}}
+        <p>No posts yet.</p>
+    {{/each}}
+    <button><a href="/dashboard/new">Add New Post</a></button>
+    <!-- include logout button/link -->
+</body>
+</html>

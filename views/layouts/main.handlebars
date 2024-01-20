@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tech Blog</title>
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>Tech Blog</title>
+    <!-- Link to your main stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- You can add more shared meta tags and resources here -->
 </head>
 <body>
-  {{{body}}}
+    <header>
+        <!-- Navigation bar, could be dynamic based on user's logged-in status -->
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {{#if logged_in}}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/api/users/logout" method="post">Logout</a></li>
+                {{else}}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/signup">Sign Up</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content of the page -->
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+        <!-- Your footer content here -->
+        <p>© 2024 Tech Blog. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to your main JavaScript file -->
+    <script src="/assets/js/app.js"></script>
 </body>
 </html>

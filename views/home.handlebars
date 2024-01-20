@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <!-- include your CSS links here -->
+</head>
+<body>
+    <h1>Welcome to the Tech Blog</h1>
+    {{#each posts}}
+        <div>
+            <h3><a href="/post/{{this.id}}">{{this.title}}</a></h3>
+            <p>{{this.content}}</p>
+            <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
+        </div>
+    {{else}}
+        <p>No posts to display.</p>
+    {{/each}}
+    <!-- include login/signup links if user is not logged in -->
+</body>
+</html>
