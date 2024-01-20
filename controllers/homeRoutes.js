@@ -1,17 +1,19 @@
-
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 
 // GET route for homepage
 router.get('/', async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      include: [User]
-    });
-    // Logic to render posts
-  } catch (err) {
-    res.status(500).json(err);
-  }
+    try {
+        const postData = await Post.findAll({
+            include: [{ model: User }, { model: Comment, include: [User] }]
+        });
+        const posts = postData.map((post) => post.get({ plain: true }));
+        res.render('home', { posts, logged_in: req.session.logged_in });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
+
+// Add other routes as needed
 
 module.exports = router;
