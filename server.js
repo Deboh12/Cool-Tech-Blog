@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const methodOverride = require('method-override');
 const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -37,6 +38,7 @@ const sess = {
 };
 
 app.use(session(sess));
+app.use(methodOverride('_method'));
 
 // Setting Handlebars as the view engine
 app.engine('handlebars', hbs.engine);

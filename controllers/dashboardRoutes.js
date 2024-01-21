@@ -53,16 +53,15 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 });
 
 // PUT route for updating an existing blog post
-router.put('/:id', withAuth, async (req, res) => {
+router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-        const updatedPost = await Post.update(req.body, {
-            where: {
-                id: req.params.id,
-                user_id: req.session.user_id
-            }
-        });
-
-        res.redirect('/dashboard');
+        const postData = await Post.findByPk(req.params.id);
+        if (!postData) {
+            res.status(404).json({ message: 'No post found with this id!' });
+            return;
+        }
+        const post = postData.get({ plain: true });
+        res.render('editPost', { post, logged_in: true });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -71,13 +70,7 @@ router.put('/:id', withAuth, async (req, res) => {
 // DELETE route for deleting an existing blog post
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-        await Post.destroy({
-            where: {
-                id: req.params.id,
-                user_id: req.session.user_id
-            }
-        });
-
+        await Post.destroy({ where: { id: req.params.id, user_id: req.session.user_id } });
         res.redirect('/dashboard');
     } catch (err) {
         res.status(500).json(err);

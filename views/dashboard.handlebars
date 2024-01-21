@@ -14,9 +14,18 @@
         <div class="post">
             <h3>{{this.title}}</h3>
             <p>{{this.content}}</p>
-            <!-- Buttons for editing and deleting posts -->
-            <button><a href="/dashboard/edit/{{this.id}}">Edit</a></button>
-            <button><a href="/dashboard/delete/{{this.id}}">Delete</a></button>
+
+            <div class="post-actions">
+                <!-- Edit Button -->
+                <form action="/dashboard/edit/{{this.id}}" method="GET">
+                    <button type="submit" class="button-style">Edit</button>
+                </form>
+
+                <!-- Delete Button -->
+                <form action="/dashboard/{{this.id}}?_method=DELETE" method="POST">
+                    <button type="submit" class="button-style">Delete</button>
+                </form>
+            </div>
         </div>
     {{else}}
         <p>You haven't created any posts yet.</p>
@@ -26,3 +35,4 @@
     <button><a href="/api/users/logout">Logout</a></button>
 </body>
 </html>
+

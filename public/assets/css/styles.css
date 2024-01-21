@@ -96,6 +96,11 @@ footer {
     width: 100%;
 }
 
+.post-actions {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons */
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     header nav ul li {

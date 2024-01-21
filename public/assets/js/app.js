@@ -141,3 +141,32 @@ if (newPostForm) {
         });
     });
 }
+
+const editPostForm = document.querySelector('#edit-post-form');
+    if (editPostForm) {
+        editPostForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const postId = editPostForm.getAttribute('action').split('/').pop();
+            const postData = {
+                title: document.querySelector('#title').value.trim(),
+                content: document.querySelector('#content').value.trim(),
+            };
+
+            fetch(`/api/posts/${postId}?_method=PUT`, {
+                method: 'POST',
+                body: JSON.stringify(postData),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    alert('Failed to update post');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    }
