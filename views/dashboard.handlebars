@@ -2,20 +2,27 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <!-- include your CSS links here -->
+    <!-- Include your CSS and other necessary head elements -->
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <h1>Your Dashboard</h1>
+
+    <!-- Option to add a new post -->
+    <button><a href="/dashboard/new">Add New Post</a></button>
+
     {{#each posts}}
-        <div>
+        <div class="post">
             <h3>{{this.title}}</h3>
             <p>{{this.content}}</p>
-            <!-- Add buttons/links for editing and deleting posts -->
+            <!-- Buttons for editing and deleting posts -->
+            <button><a href="/dashboard/edit/{{this.id}}">Edit</a></button>
+            <button><a href="/dashboard/delete/{{this.id}}">Delete</a></button>
         </div>
     {{else}}
-        <p>No posts yet.</p>
+        <p>You haven't created any posts yet.</p>
     {{/each}}
-    <button><a href="/dashboard/new">Add New Post</a></button>
-    <!-- include logout button/link -->
+
+    <!-- Include logout button/link -->
+    <button><a href="/api/users/logout">Logout</a></button>
 </body>
 </html>

@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-    <!-- include your CSS links here -->
+    <title>Home - Tech Blog</title>
+    <!-- Include your CSS and other necessary head elements -->
 </head>
 <body>
     <h1>Welcome to the Tech Blog</h1>
+
     {{#each posts}}
-        <div>
-            <h3><a href="/post/{{this.id}}">{{this.title}}</a></h3>
+        <div class="post">
+            <h2><a href="/post/{{this.id}}">{{this.title}}</a></h2>
             <p>{{this.content}}</p>
-            <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
+            <p>Posted by {{this.user.username}} on {{formatDate this.createdAt}}</p>
+            <!-- Link to view post details -->
+            <button><a href="/post/{{this.id}}">Read more</a></button>
         </div>
     {{else}}
         <p>No posts to display.</p>
     {{/each}}
-    <!-- include login/signup links if user is not logged in -->
+
+    <!-- Navigation links or buttons for login/signup if the user is not logged in -->
+    {{#unless logged_in}}
+        <button><a href="/login">Login</a></button>
+        <button><a href="/signup">Sign Up</a></button>
+    {{/unless}}
+
 </body>
 </html>
