@@ -10,6 +10,16 @@ const routes = require('./controllers'); // Importing all routes
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Assuming formatDate is defined in ./utils/helpers
+const { formatDate } = require('./utils/helpers');
+
+// Setting up Handlebars with the custom helper
+const hbs = exphbs.create({
+    helpers: {
+        formatDate // Adding the formatDate helper from utils/helpers
+    }
+});
+
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,13 +38,12 @@ const sess = {
 
 app.use(session(sess));
 
-// Setting up Handlebars as the template engine
-const hbs = exphbs.create({ /* specify any handlebars configuration here */ });
+// Setting Handlebars as the view engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// Routes
-app.use(routes); // Using the imported routes
+// Using the imported routes
+app.use(routes);
 
 // Sync Sequelize models to the database, then start the server
 sequelize.sync({ force: false }).then(() => {
