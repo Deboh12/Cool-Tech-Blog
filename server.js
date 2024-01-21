@@ -29,8 +29,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Session setup with Sequelize store
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    maxAge: 15 * 60 * 1000, // 15 minutes idle time, for example
+        httpOnly: true // Recommended to prevent client-side scripting access to the cookie
+  },
   resave: false,
+  rolling: true,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize
