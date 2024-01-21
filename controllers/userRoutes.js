@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const withAuth = require('../config/middleware/isAuthenticated');
 
 // GET route for login page
 router.get('/login', (req, res) => {
+    // Redirect to dashboard if already logged in
     if (req.session.logged_in) {
         res.redirect('/dashboard');
         return;
@@ -12,6 +14,7 @@ router.get('/login', (req, res) => {
 
 // GET route for signup page
 router.get('/signup', (req, res) => {
+    // Redirect to dashboard if already logged in
     if (req.session.logged_in) {
         res.redirect('/dashboard');
         return;
@@ -19,6 +22,6 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-// Add other user-related view routes
+// Additional routes can be added here if you have other user-related pages, like a user profile or settings page
 
 module.exports = router;
