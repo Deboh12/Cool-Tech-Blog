@@ -11,16 +11,19 @@ class User extends Model {
 
 User.init(
   {
+    // ID column
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
+    // Username column
     username: {
       type: DataTypes.STRING,
       allowNull: false
     },
+    // Password column
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,15 +33,20 @@ User.init(
     }
   },
   {
+    sequelize,
+    timestamps: true, // Enable timestamps
     hooks: {
-      // Hash the password before saving the user
+      // Hash password before saving a new user
       beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
+      },
+      // Hash password before updating user data
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
       }
     },
-    sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'user'
