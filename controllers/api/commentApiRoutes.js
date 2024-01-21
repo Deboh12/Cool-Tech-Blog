@@ -15,6 +15,46 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Add routes for updating and deleting comments as needed
+// PUT route to update an existing comment
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const updatedComment = await Comment.update(req.body, {
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id, // Ensure only the comment creator can update it
+      }
+    });
+
+    if (!updatedComment) {
+      res.status(404).json({ message: 'No comment found with this id!' });
+      return;
+    }
+
+    res.status(200).json(updatedComment);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// DELETE route to delete an existing comment
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id, // Ensure only the comment creator can delete it
+      }
+    });
+
+    if (!commentData) {
+      res.status(404).json({ message: 'No comment found with this id!' });
+      return;
+    }
+
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
