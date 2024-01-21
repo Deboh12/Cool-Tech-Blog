@@ -113,3 +113,31 @@ if (logoutLink) {
         });
     });
 }
+
+// Handle new blog post form submission
+const newPostForm = document.querySelector('#new-post-form');
+if (newPostForm) {
+    newPostForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const postData = {
+            title: document.querySelector('#title').value.trim(),
+            content: document.querySelector('#content').value.trim(),
+        };
+
+        fetch('/api/posts', {
+            method: 'POST',
+            body: JSON.stringify(postData),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '/';
+            } else {
+                alert('Failed to create post');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+}

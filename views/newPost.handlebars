@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add New Post</title>
+    <title>Create New Post</title>
     <!-- Include your CSS and other necessary head elements -->
 </head>
 <body>
-    <h1>Add New Post</h1>
+    <h1>Create a New Blog Post</h1>
 
-    <!-- Form for Adding New Post -->
-    <form action="/api/posts" method="post">
+    <!-- Form for adding a new blog post -->
+    <form id="new-post-form">
         <div>
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
@@ -22,5 +22,8 @@
 
     <!-- Link to go back to the dashboard -->
     <button><a href="/dashboard">Back to Dashboard</a></button>
+
+    <!-- Include the JavaScript file -->
+    <script src="/assets/js/app.js"></script>
 </body>
 </html>
