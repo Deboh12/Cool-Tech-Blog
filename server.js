@@ -54,6 +54,7 @@ app.get('/login', (req, res) => {
     res.render('login'); // Assuming 'login.handlebars' is your login page template
 });
 
+
 // Sync Sequelize models to the database, then start the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));

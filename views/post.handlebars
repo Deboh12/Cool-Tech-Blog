@@ -25,9 +25,9 @@
 
     <!-- Comment Submission Form -->
     {{#if logged_in}}
-        <form action="/api/comments" method="post">
-            <input type="hidden" name="post_id" value="{{post.id}}">
-            <textarea name="comment_text" placeholder="Leave a comment..." required></textarea>
+        <form id="comment-form">
+            <input type="hidden" id="post-id" name="post_id" value="{{post.id}}">
+            <textarea id="comment-text" name="comment_text" placeholder="Leave a comment..." required></textarea>
             <button type="submit">Submit Comment</button>
         </form>
     {{/if}}
@@ -35,5 +35,7 @@
     <!-- Include navigation back to home or other parts of the site -->
     <button><a href="/">Back to Home</a></button>
 
+    <!-- Correct path to your JavaScript file -->
+    <script src="/assets/js/app.js"></script>
 </body>
 </html>

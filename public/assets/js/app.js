@@ -69,28 +69,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (commentForm) {
         commentForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
             const commentData = {
                 post_id: document.querySelector('#post-id').value.trim(),
                 comment_text: document.querySelector('#comment-text').value.trim(),
             };
 
-            if (commentData.comment_text) {
-                fetch('/api/comments', {
-                    method: 'POST',
-                    body: JSON.stringify(commentData),
-                    headers: { 'Content-Type': 'application/json' },
-                })
-                .then(response => {
-                    if (response.ok) {
-                        document.location.reload();
-                    } else {
-                        alert('Failed to post comment');
-                    }
-                });
-            }
+            fetch('/api/comments', {
+                method: 'POST',
+                body: JSON.stringify(commentData),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Reload the current page to show the new comment
+                    window.location.reload();
+                } else {
+                    alert('Failed to post comment');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     }
-
 });
 
 //logout
