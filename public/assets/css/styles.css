@@ -98,18 +98,18 @@ footer {
 
 .post-actions {
     display: flex;
-    gap: 10px; /* Adjust the gap between buttons */
+    gap: 10px; 
 }
 
+#addnewpostbutton {
+    font-size: 20px;
+    padding: 9px;
+    }
+    
 /* Responsive Design */
 @media (max-width: 600px) {
     header nav ul li {
         display: block;
         margin: 5px 0;
     }
-}
-
-#addnewpostbutton {
-font-size: 20px;
-padding: 9px;
 }

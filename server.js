@@ -11,7 +11,6 @@ const routes = require('./controllers'); // Importing all routes
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Assuming formatDate is defined in ./utils/helpers
 const { formatDate } = require('./utils/helpers');
 
 // Setting up Handlebars with the custom helper
@@ -30,8 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const sess = {
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 15 * 60 * 1000, // 15 minutes idle time, for example
-        httpOnly: true // Recommended to prevent client-side scripting access to the cookie
+    maxAge: 15 * 60 * 1000, // 15 minutes idle time
+        httpOnly: true // prevent client-side scripting access to the cookie
   },
   resave: false,
   rolling: true,
@@ -57,11 +56,10 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('login'); // Assuming 'login.handlebars' is your login page template
+    res.render('login'); 
 });
 
 
-// Sync Sequelize models to the database, then start the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });

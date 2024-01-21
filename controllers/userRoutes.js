@@ -22,6 +22,5 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-// Additional routes can be added here if you have other user-related pages, like a user profile or settings page
 
 module.exports = router;

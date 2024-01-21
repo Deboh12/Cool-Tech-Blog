@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Comment, Post, User } = require('../models');
 const withAuth = require('../config/middleware/isAuthenticated');
 
-// Route to view a specific comment (if needed)
+// Route to view a specific comment 
 router.get('/comment/:id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.id, {
@@ -19,8 +19,7 @@ router.get('/comment/:id', withAuth, async (req, res) => {
     }
 });
 
-// Route for editing a comment (if needed)
-// Note: Actual editing logic would be in API route, this just renders the edit page
+// Route for editing a comment 
 router.get('/comment/edit/:id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.id);

@@ -34,7 +34,7 @@ User.init(
   },
   {
     sequelize,
-    timestamps: true, // Enable timestamps
+    timestamps: true,
     hooks: {
       // Hash password before saving a new user
       beforeCreate: async (newUserData) => {

@@ -5,7 +5,6 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    // Define columns
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -16,7 +15,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1] // Comment must be at least one character long
+        len: [1] 
       }
     },
     user_id: {
@@ -38,7 +37,7 @@ Comment.init(
   },
   {
     sequelize,
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
     freezeTableName: true,
     underscored: true,
     modelName: 'comment'

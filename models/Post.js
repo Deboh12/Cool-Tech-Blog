@@ -33,7 +33,7 @@ Post.init(
   },
   {
     sequelize,
-    timestamps: true, // Enable timestamps for createdAt and updatedAt
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'post',
