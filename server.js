@@ -45,6 +45,11 @@ app.set('view engine', 'handlebars');
 // Using the imported routes
 app.use(routes);
 
+// Additional route for the signup page
+app.get('/signup', (req, res) => {
+    res.render('signup', { query: req.query });
+});
+
 // Sync Sequelize models to the database, then start the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));

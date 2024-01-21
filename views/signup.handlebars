@@ -7,8 +7,18 @@
 <body>
     <h1>Create an Account</h1>
 
+    <!-- Display success message -->
+    {{#if query.success}}
+    <p class="success-message">{{query.success}}</p>
+    {{/if}}
+
+    <!-- Display error message -->
+    {{#if query.error}}
+    <p class="error-message">{{query.error}}</p>
+    {{/if}}
+
     <!-- Sign Up Form -->
-    <form action="/api/users/signup" method="post">
+    <form id="signup-form">
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -22,5 +32,8 @@
 
     <!-- Link to the login page -->
     <p>Already have an account? <a href="/login">Log in here</a></p>
+
+    <!-- Correct path to your JavaScript file -->
+    <script src="/assets/js/app.js"></script> <!-- Update with the correct path -->
 </body>
 </html>

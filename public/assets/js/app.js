@@ -18,10 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(response => {
                     if (response.ok) {
-                        document.location.replace('/dashboard');
+                        // Redirect to the dashboard or another page
+                        window.location.href = '/dashboard'; // Adjust this URL as needed
                     } else {
                         alert('Failed to log in');
                     }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 });
             }
         });
@@ -33,22 +37,28 @@ document.addEventListener('DOMContentLoaded', function() {
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const userData = {
-                username: document.querySelector('#username-signup').value.trim(),
-                password: document.querySelector('#password-signup').value.trim(),
+                username: document.querySelector('#username').value.trim(),
+                password: document.querySelector('#password').value.trim(),
             };
-
+    
             if (userData.username && userData.password) {
                 fetch('/api/users/signup', {
                     method: 'POST',
                     body: JSON.stringify(userData),
                     headers: { 'Content-Type': 'application/json' },
                 })
-                .then(response => {
-                    if (response.ok) {
-                        document.location.replace('/dashboard');
-                    } else {
-                        alert('Failed to sign up');
+                .then(response => response.json()) // Assuming the server sends a JSON response
+                .then(data => {
+                    // Check for success or error message in the JSON response
+                    if (data.successMessage) {
+                        alert(data.successMessage);
+                        window.location.href = '/login'; // Redirect to login page
+                    } else if (data.errorMessage) {
+                        alert(data.errorMessage);
                     }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 });
             }
         });
