@@ -7,13 +7,13 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: pink;
+    color: black;
 }
 
 /* Header */
 header {
-    background: #333;
+    background: rgb(9, 9, 94);
     color: #fff;
     padding: 1rem 0;
     text-align: center;
@@ -107,4 +107,9 @@ footer {
         display: block;
         margin: 5px 0;
     }
+}
+
+#addnewpostbutton {
+font-size: 20px;
+padding: 9px;
 }

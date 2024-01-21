@@ -8,7 +8,7 @@
     <h1>Your Dashboard</h1>
 
     <!-- Option to add a new post -->
-    <button><a href="/dashboard/new">Add New Post</a></button>
+    <button id="addnewpostbutton"><a href="/dashboard/new">Add New Post</a></button>
 
     {{#each posts}}
         <div class="post">
@@ -31,8 +31,6 @@
         <p>You haven't created any posts yet.</p>
     {{/each}}
 
-    <!-- Include logout button/link -->
-    <button><a href="/api/users/logout">Logout</a></button>
 </body>
 </html>
 

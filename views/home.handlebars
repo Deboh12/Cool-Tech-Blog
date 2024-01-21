@@ -17,12 +17,6 @@
         <p>No posts to display.</p>
     {{/each}}
 
-    <!-- Navigation links or buttons for login/signup if the user is not logged in -->
-    {{#unless logged_in}}
-        <button><a href="/login">Login</a></button>
-        <button><a href="/signup">Sign Up</a></button>
-    {{/unless}}
-
     <!-- JavaScript for Handling Click Events on Posts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
