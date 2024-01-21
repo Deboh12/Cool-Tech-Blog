@@ -9,11 +9,9 @@
 
     {{#each posts}}
         <div class="post">
-            <h2><a href="/post/{{this.id}}">{{this.title}}</a></h2>
+            <h2><a href="/post/{{this.id}}" class="post-link">{{this.title}}</a></h2>
             <p>{{this.content}}</p>
             <p>Posted by {{this.user.username}} on {{formatDate this.createdAt}}</p>
-            <!-- Link to view post details -->
-            <button><a href="/post/{{this.id}}">Read more</a></button>
         </div>
     {{else}}
         <p>No posts to display.</p>
@@ -25,5 +23,20 @@
         <button><a href="/signup">Sign Up</a></button>
     {{/unless}}
 
+    <!-- JavaScript for Handling Click Events on Posts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const postLinks = document.querySelectorAll('.post-link');
+
+            postLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    {{#unless logged_in}}
+                    event.preventDefault(); // Prevent the default link behavior
+                    alert('Please login or signup to continue further!');
+                    {{/unless}}
+                });
+            });
+        });
+    </script>
 </body>
 </html>

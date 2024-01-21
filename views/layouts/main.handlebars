@@ -15,10 +15,11 @@
                 <li><a href="/">Home</a></li>
                 {{#if logged_in}}
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/api/users/logout" method="post">Logout</a></li>
+                    <!-- Logout link is only shown when logged in -->
+                    <li><a href="#" id="logout-link">Logout</a></li>
                 {{else}}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
+                    <li><a href="/users/login">Login</a></li>
+                    <li><a href="/users/signup">Sign Up</a></li>
                 {{/if}}
             </ul>
         </nav>

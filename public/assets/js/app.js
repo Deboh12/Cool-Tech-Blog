@@ -82,3 +82,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+//logout
+
+const logoutLink = document.querySelector('#logout-link');
+if (logoutLink) {
+    logoutLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        fetch('/api/users/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+        }).then(response => {
+            if (response.ok) {
+                document.location.replace('/');
+            } else {
+                alert('Failed to log out');
+            }
+        });
+    });
+}
