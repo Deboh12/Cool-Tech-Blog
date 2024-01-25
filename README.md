@@ -40,6 +40,12 @@ To use Cool-Tech-Blog, start the server and visit http://localhost:3001 in your 
 
 demo video: https://drive.google.com/file/d/1hLXtCs4gwyo3zKyQTMGW_0HjZQNducbu/view
 
+Screenshots: 
+
+![Alt text](<public/assets/img/Screenshot 2024-01-24 at 6.44.57 PM.png>)
+![Alt text](<public/assets/img/Screenshot 2024-01-24 at 6.45.07 PM.png>)
+![Alt text](<public/assets/img/Screenshot 2024-01-24 at 6.45.18 PM.png>)
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
